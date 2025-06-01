@@ -1,9 +1,31 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
+	<meta charset="UTF-8">
+	<title>マイページ</title>
+	<link rel="stylesheet" type="text/css" href="/css/items.css">
+	<link rel="stylesheet" type="text/css" href="/css/reset.css">
 </head>
+
 <body>
 
+	<main class="container">
+		<img class="profile-image" src="icon-sake.png" alt="プロフィール画像">
+		<h1 class="greeting">こんにちは</h1>
+
+		<div class="buttons">
+			<button class="btn yellow">
+				<span class="icon">👤⚙️</span>
+				登録情報修正
+			</button>
+			<button class="btn yellow">
+				<span class="icon">📋</span>
+				注文履歴
+			</button>
+		</div>
+
+		<button class="btn black">トップページに戻る</button>
+	</main>
 </body>
+
 </html>
