@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>推しおにぎり選択</title>
+  <!-- <link rel="stylesheet" type="text/css/" href="">
+  <link rel="stylesheet" type="text/css/" href=""> -->
+</head>
+
+<body>
+  <h2>推しおにぎりを選んでください</h2>
+
+  <form action="/users/add" method="post">
+    <div class="onigiri-grid">
+      <input type="radio" name="onigiri" id="salmon" value="salmon">
+      <label for="salmon"><img src="/images/icon_sake.png" alt="鮭" /></label>
+
+      <input type="radio" name="onigiri" id="ikura" value="ikura">
+      <label for="ikura"><img src="/images/icon_ikura.png" alt="いくら" /></label>
+
+      <input type="radio" name="onigiri" id="okaka" value="okaka">
+      <label for="okaka"><img src="/images/icon_okaka.png" alt="おかか" /></label>
+
+      <input type="radio" name="onigiri" id="tunamayo" value="tunamayo">
+      <label for="tunamayo"><img src="/images/icon_tunamayo.png" alt="ツナマヨ" /></label>
+
+      <input type="radio" name="onigiri" id="konbu" value="konbu">
+      <label for="konbu"><img src="/images/icon_konbu" alt="昆布"></label>
+    </div>
+    <div>
+      <button>登録する</button>
+    </div>
+
+  </form>
+
+</body>
+</html>
