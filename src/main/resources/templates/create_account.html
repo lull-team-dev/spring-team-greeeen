@@ -11,29 +11,32 @@
 <body>
   <h2>お客様情報の登録</h2>
   <div class="create-account-box">
-    <form action="/users/add" method="post">
-      <input type="text" name="name" placeholder="名前">
-      <span class="error-message" th:text="${message}"></span>
+	<form action="/users/add" method="post">
+	  <input type="text" name="name" placeholder="名前">
+	  <span class="error-message" th:text="${nameMessage} ?: ''"></span>
 
-      <input type="text" name="email" placeholder="メールアドレス">
-      <span class="error-message" th:text="${message}"></span>
+	  <input type="text" name="email" placeholder="メールアドレス">
+	  <span class="error-message" th:text="${emailMessage} ?: ''"></span>
 
-      <input type="text" name="address" placeholder="住所">
-      <span class="error-message" th:text="${message}"></span>
+	  <input type="text" name="address" placeholder="住所">
+	  <span class="error-message" th:text="${addressMessage} ?: ''"></span>
 
-      <input type="text" name="tel" placeholder="電話番号">
-      <span class="error-message" th:text="${message}"></span>
+	  <input type="text" name="tel" placeholder="電話番号">
+	  <span class="error-message" th:text="${telMessage} ?: ''"></span>
 
-      <input type="text" name="password" placeholder="パスワード">
-      <span class="error-message" th:text="${message}"></span>
+	  <input type="text" name="password" placeholder="パスワード">
+	  <span class="error-message" th:text="${passwordMessage} ?: ''"></span>
 
-      <input type="text" name="password_confirm" placeholder="確認用パスワード">
-      <span class="error-message" th:text="${message}"></span>
+	  <input type="text" name="password_confirm" placeholder="確認用パスワード">
+	  <span class="error-message" th:text="${password_confirmMessage} ?: ''"></span>
 
-      <div>
-        <button>次へ</button>
-      </div>
-    </form>
+	  <span class="error-message" th:text="${message} ?: ''"></span>
+
+	  <div>
+	    <button type="submit">次へ</button>
+	  </div>
+	</form>
+
   </div>
 </body>
 </html>
