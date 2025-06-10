@@ -1,37 +1,57 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-  <meta charset="UTF-8">
-  <title>推しおにぎり選択</title>
-  <!-- <link rel="stylesheet" type="text/css/" href="">
+	<meta charset="UTF-8">
+	<title>推しおにぎり選択</title>
+	<!-- <link rel="stylesheet" type="text/css/" href="">
   <link rel="stylesheet" type="text/css/" href=""> -->
 </head>
 
 <body>
-  <h2>推しおにぎりを選んでください</h2>
+	<h2>推しおにぎりを選んでください</h2>
 
-  <form action="/users/add" method="post">
-    <div class="onigiri-grid">
-      <input type="radio" name="onigiri" id="salmon" value="salmon">
-      <label for="salmon"><img src="/images/icon_sake.png" alt="鮭" /></label>
+	<form action="/users/icon" method="post">
+		<div class="onigiri-grid">
+			<input type="radio" name="onigiri" id="sake" value="sake">
+			<label for="salmon"><img src="/images/icon-images/icon_sake.png" alt="鮭" /></label>
 
-      <input type="radio" name="onigiri" id="ikura" value="ikura">
-      <label for="ikura"><img src="/images/icon_ikura.png" alt="いくら" /></label>
+			<input type="radio" name="onigiri" id="ikura" value="ikura">
+			<label for="ikura"><img src="/images/icon-images/icon_ikura.png" alt="いくら" /></label>
 
-      <input type="radio" name="onigiri" id="okaka" value="okaka">
-      <label for="okaka"><img src="/images/icon_okaka.png" alt="おかか" /></label>
+			<input type="radio" name="onigiri" id="okaka" value="okaka">
+			<label for="okaka"><img src="/images/icon-images/icon_okaka.png" alt="おかか" /></label>
 
-      <input type="radio" name="onigiri" id="tunamayo" value="tunamayo">
-      <label for="tunamayo"><img src="/images/icon_tunamayo.png" alt="ツナマヨ" /></label>
+			<input type="radio" name="onigiri" id="tunamayo" value="tunamayo">
+			<label for="tunamayo"><img src="/images/icon-images/icon_tunamayo.png" alt="ツナマヨ" /></label>
 
-      <input type="radio" name="onigiri" id="konbu" value="konbu">
-      <label for="konbu"><img src="/images/icon_konbu" alt="昆布"></label>
-    </div>
-    <div>
-      <button>登録する</button>
-    </div>
+			<input type="radio" name="onigiri" id="konbu" value="konbu">
+			<label for="konbu"><img src="/images/icon-images/icon_konbu.png" alt="昆布"></label>
 
-  </form>
+			<input type="radio" name="onigiri" id="mentacream cheese" value="mentacream cheese">
+			<label for="mentacream cheese"><img src="/images/icon-images/icon_mentacream cheese.png" alt="明太クリームチーズ"></label>
+
+			<input type="radio" name="onigiri" id="mentaiko" value="mentaiko">
+			<label for="mentaiko"><img src="/images/icon-images/icon_mentaiko.png" alt="明太子"></label>
+
+			<input type="radio" name="onigiri" id="namatarako" value="namatarako">
+			<label for="namatarako"><img src="/images/icon-images/icon_namatarako.png" alt="生明太子"></label>
+			
+			<input type="radio" name="onigiri" id="soboro" value="soboro">
+			<label for="soboro"><img src="/images/icon-images/icon_soboro.png" alt="そぼろ"></label>
+			
+			<input type="radio" name="onigiri" id="takana" value="takana">
+			<label for="takana"><img src="/images/icon-images/icon_takana.png" alt="高菜"></label>
+			
+			<input type="radio" name="onigiri" id="ume" value="ume">
+			<label for="ume"><img src="/images/icon-images/icon_ume.png" alt="梅"></label>
+		</div>
+		<div>
+			<button>登録する</button>
+		</div>
+
+	</form>
 
 </body>
+
 </html>

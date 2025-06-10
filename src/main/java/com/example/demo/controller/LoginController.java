@@ -96,7 +96,7 @@ public String add(
 
    // 入力に問題がない場合、Customerエンティティを作成し、DBに保存
    Customer customer = new Customer(name, email, address, tel, password);
-   customerRepository.save(customer);
+   session.setAttribute("customer", customer);
 
    // 登録完了後、「推しおにぎり登録画面(create_image)」へ遷移
    return "create_image";
@@ -108,4 +108,21 @@ public String add(
     return "create_image";
   }
 
+//推しおにぎり画面の登録
+  @PostMapping("/users/icon")
+  public String select(@RequestParam("onigiri") String iconPath, HttpSession session) {
+      Customer customer = (Customer) session.getAttribute("customer");
+      if (customer == null) {
+          // セッション切れ等の対策
+          return "redirect:/users/add";
+      }
+
+      customer.setIconPath(iconPath);
+      customerRepository.save(customer);
+
+      // セッションから削除（完了後）
+      session.removeAttribute("customer");
+
+      return "items"; // 完了画面
+  }
 }

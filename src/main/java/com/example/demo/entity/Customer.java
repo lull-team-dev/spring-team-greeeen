@@ -39,7 +39,9 @@ public class Customer {
 		this.email = email;
 		this.password = password;
 	}
-
+	public Customer(String iconPath) {
+		this.iconPath = iconPath;
+	}
 	public Customer(String name, String address, String tel, String email, String password, String iconPath) {
 		this.name = name;
 		this.address = address;
@@ -76,5 +78,9 @@ public class Customer {
 
 	public String getIconPath() {
 		return iconPath;
+	}
+	//セッター
+	public void setIconPath(String iconPath) {
+	    this.iconPath = iconPath;
 	}
 }
