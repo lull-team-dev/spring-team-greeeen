@@ -1,9 +1,44 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8">
-</head>
-<body>
+<header class="header">
+  <!-- ナビゲーションアイコン全体を囲むコンテナ -->
+  <div class="nav-icons">
 
-</body>
-</html>
+    <!-- マイページリンクのアイコンとテキスト -->
+    <div class="icon-item">
+      <!-- リンク全体（画像＋テキスト）でマイページへ遷移 -->
+      <a href="/mypage">
+        <!-- マイページのアイコン画像 -->
+        <img src="icon_mypage.png" alt="マイページ">
+        <!-- 表示される項目名 -->
+        <span>マイページ</span>
+      </a>
+    </div>
+
+    <!-- トップページリンク -->
+    <div class="icon-item">
+      <!-- トップページへのリンク（画像＋テキスト） -->
+      <a href="/items">
+        <img src="icon_home.png" alt="トップ">
+        <span>トップ</span>
+      </a>
+    </div>
+
+    <!-- カートページリンク -->
+    <div class="icon-item">
+      <!-- カートページへのリンク -->
+      <a href="/cart">
+        <img src="icon_cart.png" alt="カート">
+        <span>カート</span>
+      </a>
+    </div>
+
+    <!-- ログアウトリンク -->
+    <div class="icon-item">
+      <!-- ログアウト処理へのリンク -->
+      <a href="/logout">
+        <img src="icon_logout.png" alt="ログアウト">
+        <span>ログアウト</span>
+      </a>
+    </div>
+
+  </div>
+</header>

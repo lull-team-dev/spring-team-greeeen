@@ -1,9 +1,122 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8">
-</head>
-<body>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
 
+<head>
+	<meta charset="UTF-8" />
+	<title>マイページ</title>
+
+	<!-- CSSの読み込み（Thymeleaf構文使用） -->
+	<link rel="stylesheet" type="text/css" th:href="@{/css/reset.css}" />
+	<link rel="stylesheet" type="text/css" th:href="@{/css/items.css}" />
+
+	<style>
+		.avatar-selection {
+			display: flex;
+			justify-content: center;
+			flex-wrap: wrap;
+			gap: 12px;
+			margin: 20px 0;
+		}
+
+		.avatar-selection input[type="radio"] {
+			display: none;
+		}
+
+		.avatar-selection label {
+			cursor: pointer;
+			display: inline-block;
+			border-radius: 50%;
+			overflow: hidden;
+			transition: border 0.3s;
+		}
+
+		.avatar-selection img {
+			width: 80px;
+			height: 80px;
+			border-radius: 50%;
+			border: 3px solid transparent;
+			transition: border-color 0.3s;
+		}
+
+		.avatar-selection input[type="radio"]:checked+img {
+			border-color: #333;
+		}
+
+		.error {
+			color: red;
+			font-size: 0.8rem;
+		}
+	</style>
+</head>
+
+<body>
+	<!-- ヘッダーをThymeleafのフラグメント「header」で差し替え -->
+	<header th:replace="header"></header>
+	<h1>登録情報修正</h1>
+
+<!--	<form th:action="@{/mypage/{customerId}/update(customerId=${customer.Id})}" method="post">-->
+		<div>
+<!--			th:value="${customer.name}"使用-->
+			<input type="text" name="name" placeholder="名前" required>
+<!--			コントローラーで表示するエラー文作成-->
+			<span th:text="${message}" style="color:red"></span><br />
+		</div>
+		<div>
+			<!--			th:value="${customer.email}" 使用-->
+			<input type="email" name="email" placeholder="メールアドレス"required>
+			<span th:text="${message}" style="color:red"></span><br />
+		</div>
+		<div>
+			<!--			th:value="${customer.address}" 使用-->
+			<input type="text" name="address" placeholder="住所" required>
+			<span th:text="${message}" style="color:red"></span><br />
+		</div>
+		<div>
+			<!--			th:value="${customer.tel}" 使用-->
+			<input type="tel" name="tel" placeholder="電話番号" required>
+			<span th:text="${message}" style="color:red"></span><br />
+		</div>
+		<div>
+			<!--			th:value="${customer.password}" 使用-->
+			<input type="password" name="password" placeholder="パスワード" required>
+			<span th:text="${message}" style="color:red"></span><br />
+		</div>
+		<div>
+			<!--			th:value="${customer.confirmPassword}" 使用-->
+			<input type="password" name="confirmPassword" placeholder="確認用パスワード" required>
+			<span th:text="${message}" style="color:red"></span><br />
+		</div>
+
+		<p>推しおにぎりを選ぶ</p>
+		<div class="avatar-selection">
+			<label>
+				<input type="radio" name="onigiri" value="1">
+				<img src="/images/onigiri1.png" alt="おにぎり1">
+			</label>
+			<label>
+				<input type="radio" name="onigiri" value="2">
+				<img src="/images/onigiri2.png" alt="おにぎり2">
+			</label>
+			<label>
+				<input type="radio" name="onigiri" value="3">
+				<img src="/images/onigiri3.png" alt="おにぎり3">
+			</label>
+			<label>
+				<input type="radio" name="onigiri" value="4">
+				<img src="/images/onigiri4.png" alt="おにぎり4">
+			</label>
+			<label>
+				<input type="radio" name="onigiri" value="5">
+				<img src="/images/onigiri5.png" alt="おにぎり5">
+			</label>
+			<label>
+				<input type="radio" name="onigiri" value="6">
+				<img src="/images/onigiri6.png" alt="おにぎり6">
+			</label>
+		</div>
+
+		<button type="submit">修正</button>
+	</form>
 </body>
+
 </html>

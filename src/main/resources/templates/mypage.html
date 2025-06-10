@@ -1,9 +1,52 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8">
-</head>
-<body>
 
+<head>
+  <!-- 文字エンコーディングをUTF-8に設定 -->
+  <meta charset="UTF-8" />
+  <!-- ページタイトル -->
+  <title>マイページ</title>
+  <!-- CSSリセット用のスタイルシート -->
+  <link rel="stylesheet" type="text/css" href="/css/reset.css" />
+  <!-- ページ固有のスタイルシート -->
+  <link rel="stylesheet" type="text/css" href="/css/items.css" />
+</head>
+
+<body>
+  <!-- ヘッダーをThymeleafのフラグメント「header」で差し替え -->
+  <header th:replace="header"></header>
+
+  <main class="container">
+    <!-- ユーザーのプロフィール画像 -->
+    <img class="profile-image" src="icon-sake.png" alt="プロフィール画像" />
+
+    <!-- ユーザーへの挨拶文 -->
+    <h1 class="greeting">こんにちは</h1>
+
+    <!-- 登録情報修正ページへGETリクエストで遷移するフォーム -->
+    <form action="/mypage/update" method="get">
+      <button class="btn" type="submit">
+        <!-- ボタン内のアイコン -->
+        <span class="icon">👤⚙️</span>
+        登録情報修正
+      </button>
+    </form>
+
+    <!-- 注文履歴ページへGETリクエストで遷移するフォーム -->
+    <form action="/mypage/order_history" method="get">
+      <button class="btn" type="submit">
+        <span class="icon">📋</span>
+        注文履歴
+      </button>
+    </form>
+
+    <!-- トップページへGETリクエストで遷移するフォーム -->
+    <form action="/items" method="get">
+      <button class="btn black" type="submit">
+        トップページに戻る
+      </button>
+    </form>
+  </main>
 </body>
+
 </html>
