@@ -2,8 +2,8 @@ package com.example.demo.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+//import org.springframework.web.bind.annotation.RequestMapping;
+//import org.springframework.web.bind.annotation.RestController;
 
 
 
@@ -19,9 +19,9 @@ public String index() {
 
 }
 
-// 非同期用のコントローラー
-@RestController
-@RequestMapping("/api/items")
-public class apiController {
-
-}
+//// 非同期用のコントローラー
+//@RestController
+//@RequestMapping("/api/items")
+//public class apiController {
+//
+//}
