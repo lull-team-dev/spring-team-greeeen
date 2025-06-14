@@ -1,9 +1,56 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8">
-</head>
-<body>
+<!-- Thymeleafテンプレートとして処理されるHTML -->
 
+<head>
+	<!-- 文字エンコーディングをUTF-8に設定 -->
+	<meta charset="UTF-8" />
+
+	<!-- ページタイトル -->
+	<title>マイページ</title>
+
+	<!-- CSSリセット：ブラウザのデフォルトスタイルを初期化 -->
+	<link rel="stylesheet" type="text/css" href="/css/reset.css" />
+
+	<!-- ページ固有のスタイル（注文履歴のレイアウトや色など） -->
+	<link rel="stylesheet" type="text/css" href="/css/items.css" />
+</head>
+
+<body>
+	<!-- ヘッダーを共通フラグメント（header.htmlなど）から挿入 -->
+	<header th:replace="header"></header>
+
+	<!-- 見出し -->
+	<h1>注文履歴</h1>
+
+	<!-- ordersリストをループして、1注文ごとに表示 -->
+	<div th:each="order : ${orders}" class="order">
+
+		<!-- 注文日時を表示-->
+		<div class="order-date" th:text="${order.orderedOn}"></div>
+
+		<!-- 注文に含まれる商品一覧をループ -->
+		<div class="order-items">
+			<!-- 1つの商品を表示（名前 + 数量 + 単価） -->
+			<div class="item" th:each="item : ${order.items}">
+				<!-- 商品名 -->
+				<span th:text="${item.name}"></span>
+				
+				<!-- 「〇個 〇円」というフォーマットで数量と価格を表示 -->
+				<span th:text="|${item.quantity}個　${item.price}円|"></span>
+			</div>
+		</div>
+
+		<!-- 注文ごとの合計金額を表示 -->
+		<div class="total" th:text="|合計：${order.total}円|"></div>
+	</div>
+
+	<!-- 戻るボタン：前のページに戻る -->
+	<form action="/mypage" method="get">
+	<div class="back-button">
+		<button type="submit">戻る</button>
+	</div>
+	</form>
 </body>
+
 </html>
