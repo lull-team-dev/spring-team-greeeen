@@ -37,3 +37,4 @@ public List<Item> getItemsByCategory(@RequestBody Map<String, String> request) {
     return ItemRepository.findByCategoryId(categoryId);
 }
 }
+

@@ -31,7 +31,12 @@ public class Customer {
 	// コンストラクタ
 	public Customer() {
 	}
-
+	//ログイン用
+	public Customer(String email,String password) {
+		this.email = email;
+		this.password = password;
+	}
+	//新規登録用
 	public Customer(String name, String email,String address, String tel, String password) {
 		this.name = name;
 		this.address = address;
@@ -39,6 +44,7 @@ public class Customer {
 		this.email = email;
 		this.password = password;
 	}
+	//アイコン選択画面用
 	public Customer(String iconPath) {
 		this.iconPath = iconPath;
 	}
