@@ -14,27 +14,35 @@ import com.example.demo.entity.Item;
 import com.example.demo.repository.ItemRepository;
 
 @Controller
-public class ItemController{
-	
+public class ItemController {
+
 	@Autowired
-	ItemRepository ItemRepository;
-	
-	@GetMapping("/item")
-	public String  index() {
-		 return "items";
+	ItemRepository itemRepository;
+
+	// HTMLページ表示
+	@GetMapping("/items")
+	public String index() {
+		return "items"; // templates/items.html
 	}
-	
-@PostMapping("/item")
-@ResponseBody
-public List<Item> getItemsByCategory(@RequestBody Map<String, String> request) {
-    String categoryIdStr = request.get("categoryId");
 
-    if (categoryIdStr == null || categoryIdStr.isEmpty()) {
-        return ItemRepository.findAll();  // カテゴリ未指定 → 全商品
-    }
+	// 初回商品取得（非同期 GET）
+	@GetMapping("/api/items/all")
+	@ResponseBody
+	public List<Item> getItemAll() {
+		return itemRepository.findAll();
+	}
 
-    Integer categoryId = Integer.parseInt(categoryIdStr);
-    return ItemRepository.findByCategoryId(categoryId);
+	// カテゴリ検索（非同期 POST）
+	@PostMapping("/category/items")
+	@ResponseBody
+	public List<Item> getItemsByCategory(@RequestBody Map<String, String> request) {
+		String categoryIdStr = request.get("categoryId");
+
+		if (categoryIdStr == null || categoryIdStr.isEmpty()) {
+			return itemRepository.findAll(); // カテゴリ指定なし→全件返す
+		}
+
+		Integer categoryId = Integer.parseInt(categoryIdStr);
+		return itemRepository.findByCategoryId(categoryId);
+	}
 }
-}
-
