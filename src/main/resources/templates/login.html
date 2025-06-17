@@ -23,6 +23,7 @@
 
     <div class="login-box">
       <form action="/login" method="post">
+		<span th:text="${message}" style="color:red"></span><br />
         <input type="text" name="email" placeholder="メールアドレス">
         <input type="text" name="password" placeholder="パスワード">
         <button>ログイン</button>

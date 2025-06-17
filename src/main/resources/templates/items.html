@@ -1,38 +1,37 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<meta charset="UTF-8">
+	<meta charset="UTF-8">
 </head>
+
 <body>
-    <!-- /共通のヘッダー（トップ、ログアウト、マイページ、カート） -->
-    <header th:replace=""></header>
-<main>
+	<!-- /共通のヘッダー（トップ、ログアウト、マイページ、カート） -->
+	<header th:replace="header"></header>
+	<main>
 
-    <div class="search-bar">
-        <div class="search-bar-input">
-            <input type="text" id="search-input" placeholder="具で検索">
-        </div>
-        <div class="sort-category" id="category-links">
-            <button
-                th:each="category : ${categories}"
-                th:text="${category.name}"
-                th:attr="data-id=${category.id}">
-            </button>
-        </div>
-    </div>
-    <!-- itemsとcartのセクションを分ける-->
-    <div class="item-container">
+		<div class="search-bar">
+			<div class="search-bar-input">
+				<input type="text" id="search-input" placeholder="具で検索">
+			</div>
+			<div class="sort-category" id="category-links">
+				<button th:each="category : ${categories}" th:text="${category.name}" th:attr="data-id=${category.id}">
+				</button>
+			</div>
+		</div>
+		<!--     itemsとcartのセクションを分ける-->
+		<div class="item-container">
 
-    <div id="item-list"></div>
-    <div id="cart-item"></div>
-    
-</div>
+			<div id="item-list"></div>
+			<div id="cart-item"></div>
 
-
-    
+		</div>
 
 
 
-</main>
-</body>
+
+        <script th:src="@{/static/js/main.js}"></script>
+
+	</main>
+
 </html>

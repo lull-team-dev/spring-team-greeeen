@@ -1,9 +1,25 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
+  <meta charset="UTF-8">
+  <title>ご注文確認</title>
+  <!-- <link rel="stylesheet" type="text/css" href="/css/style.css"> -->
 </head>
 <body>
+  <header th:replace="header"></header>
+  <main>
+    <h2>注文内容</h2>
+    <span th:replace="cart"></span>
+
+    <h2>お届け先</h2>
+    <form action="/order" method="post">
+      お届け先住所
+      <input type="hidden" name="deliveryAddress" th:value="${orders.deliveryAddress}">
+      連絡先
+      <input type="hidden" name="deliveryTel" th:value="${orders.tel}">
+      <button>注文を確定</button>
+    </form>
+  </main>
 
 </body>
 </html>
