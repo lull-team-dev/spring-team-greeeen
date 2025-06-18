@@ -45,6 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			const list = document.getElementById('item-list');
 			list.innerHTML = '';
 			items.forEach(item => {
+				console.log(item); 
 				const itemCard = `
 					<div class="item-card">
 						<p class="ranking">${item.ranking ?? ''}</p>
