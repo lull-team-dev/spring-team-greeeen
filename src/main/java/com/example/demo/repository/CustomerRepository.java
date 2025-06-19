@@ -9,4 +9,6 @@ import com.example.demo.entity.Customer;
 
 public interface CustomerRepository extends JpaRepository<Customer, Integer> {
 	List<Customer> findByEmailAndPassword(String email, String password);
+	
+	Customer findByEmail(String email);
 }
