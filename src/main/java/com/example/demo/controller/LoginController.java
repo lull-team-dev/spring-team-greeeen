@@ -99,30 +99,54 @@ public class LoginController {
 		// 入力チェックに使うフラグ
 		boolean hasError = false;
 
-		// 各入力項目が空かどうかを個別に確認し、エラーメッセージをセット
+		// 名前のチェック
 		if (name.isEmpty()) {
-			model.addAttribute("nameMessage", "※名前を入力してください");
-			hasError = true;
+		    model.addAttribute("nameMessage", "※名前を入力してください");
+		    hasError = true;
+		} else if (name.length() > 50) {
+		    model.addAttribute("nameMessage", "※名前は50文字以内で入力してください");
+		    hasError = true;
 		}
+		//メールのチェック  
 		if (email.isEmpty()) {
-			model.addAttribute("emailMessage", "※メールアドレスを入力してください");
-			hasError = true;
+		    model.addAttribute("emailMessage", "※メールアドレスを入力してください");
+		    hasError = true;
+		} else {
+		    Customer existingCustomer = customerRepository.findByEmail(email);
+		    if (existingCustomer != null) {
+		        model.addAttribute("emailMessage", "※このメールアドレスはすでに使用されています");
+		        hasError = true;
+		    }
 		}
+		    
+		// 住所のチェック
 		if (address.isEmpty()) {
-			model.addAttribute("addressMessage", "※住所を入力してください");
-			hasError = true;
+		    model.addAttribute("addressMessage", "※住所を入力してください");
+		    hasError = true;
+		} else if (address.length() > 255) {
+		    model.addAttribute("addressMessage", "※住所は255文字以内で入力してください");
+		    hasError = true;
 		}
+		//電話番号のチェック
 		if (tel.isEmpty()) {
 			model.addAttribute("telMessage", "※電話番号を入力してください");
 			hasError = true;
 		}
+		//パスワードのチェック
 		if (password.isEmpty()) {
 			model.addAttribute("passwordMessage", "※パスワードを入力してください");
 			hasError = true;
+		} else if (password.length() < 8 || password.length() > 32) {
+		    model.addAttribute("passwordMessage", "※パスワードは8文字以上32文字以内で入力してください");
+		    hasError = true;
 		}
+		//確認用パスワードのチェック
 		if (password_confirm.isEmpty()) {
 			model.addAttribute("password_confirmMessage", "※確認用パスワードを入力してください");
 			hasError = true;
+		}else if (password_confirm.length() < 8 || password_confirm.length() > 32) {
+		    model.addAttribute("password_confirmMessage", "※確認用パスワードは8文字以上32文字以内で入力してください");
+		    hasError = true;
 		}
 
 		// パスワードと確認用パスワードが一致していない場合
@@ -165,6 +189,6 @@ public class LoginController {
 		// セッションから削除（完了後）
 		session.removeAttribute("customer");
 
-		return "items"; // 完了画面
+		return "redirect:/login"; // ログイン画面
 	}
 }
