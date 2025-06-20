@@ -10,20 +10,30 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.example.demo.entity.Category;
 import com.example.demo.entity.Item;
+import com.example.demo.repository.CategoryRepository;
 import com.example.demo.repository.ItemRepository;
+
+import org.springframework.ui.Model; // ✅ これが正解！
+
 
 @Controller
 public class ItemController {
 
 	@Autowired
 	ItemRepository itemRepository;
+	
+	@Autowired
+	CategoryRepository CategoryRepository;
 
 	// HTMLページ表示
-	@GetMapping("/items")
-	public String index() {
-		return "items"; // templates/items.html
-	}
+@GetMapping("/items")
+public String index(Model model) {
+	List<Category> categories = CategoryRepository.findAll();
+	model.addAttribute("categories", categories);
+	return "items";
+}
 
 	// 初回商品取得（非同期 GET）
 	@GetMapping("/api/items/all")
