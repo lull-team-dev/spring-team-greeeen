@@ -15,8 +15,9 @@
 				<input type="text" id="search-input" placeholder="具で検索">
 			</div>
 			<div class="sort-category" id="category-links">
-				<button th:each="category : ${categories}" th:text="${category.name}" th:attr="data-id=${category.id}">
-				</button>
+				<button th:each="category : ${categories}" th:attr="data-id=${category.id}">
+	<span th:text="${category.name}"></span>
+</button>
 			</div>
 		</div>
 		<!--     itemsとcartのセクションを分ける-->
