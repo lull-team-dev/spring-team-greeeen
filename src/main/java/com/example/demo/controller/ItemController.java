@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,9 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.example.demo.entity.Category;
 import com.example.demo.entity.Item;
 import com.example.demo.repository.CategoryRepository;
-import com.example.demo.repository.ItemRepository;
-
-import org.springframework.ui.Model; // ✅ これが正解！
+import com.example.demo.repository.ItemRepository; 
 
 
 @Controller
@@ -55,4 +54,15 @@ public String index(Model model) {
 		Integer categoryId = Integer.parseInt(categoryIdStr);
 		return itemRepository.findByCategoryId(categoryId);
 	}
+
+
+@PostMapping("/api/items/search")
+@ResponseBody
+public List<Item> searchItems(@RequestBody Map<String, String> request) {
+	String keyword = request.get("keyword");
+	if (keyword == null || keyword.isEmpty()) {
+		return itemRepository.findAll(); // 空文字なら全件返す
+	}
+	return itemRepository.findByNameContaining(keyword);
+}
 }
