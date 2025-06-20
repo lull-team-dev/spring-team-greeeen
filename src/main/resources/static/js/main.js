@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
 						<img src="/images/${item.imagePath}" alt="商品画像">
 					</div>
 				</div>
+                <button class="add-to-cart-button" data-id="${item.id}">カートに追加</button>
 			</div>
 		`;
 	}
@@ -82,6 +83,7 @@ function categorySearch() {
 										<img src="/images/${item.imagePath}" alt="商品画像">
 									</div>
 								</div>
+                                <button class="add-to-cart-button" data-id="${item.id}">カートに追加</button>
 							</div>
 						`;
 						list.insertAdjacentHTML('beforeend', itemCard);
