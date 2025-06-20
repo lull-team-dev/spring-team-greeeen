@@ -12,8 +12,9 @@
 
 		<div class="search-bar">
 			<div class="search-bar-input">
-				<input type="text" id="search-input" placeholder="具で検索">
-			</div>
+	<input type="text" id="search-input" placeholder="具で検索">
+	<button id="search-button">検索</button>
+</div>
 			<div class="sort-category" id="category-links">
 				<button th:each="category : ${categories}" th:attr="data-id=${category.id}">
 	<span th:text="${category.name}"></span>
