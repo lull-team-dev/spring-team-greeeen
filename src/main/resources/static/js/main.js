@@ -1,3 +1,59 @@
+
+document.addEventListener('DOMContentLoaded', () => {
+	const searchInput = document.getElementById('search-input');
+	const searchButton = document.getElementById('search-button');
+	const itemList = document.getElementById('item-list');
+
+	function createItemCard(item) {
+		return `
+			<div class="item-card">
+				<p class="ranking">${item.ranking ?? ''}</p>
+				<div class="nameAndDetail">
+					<h1>${item.name}</h1>
+					<div class="item-detail">
+						<div class="featureAndPrice">
+							<p class="feature">${item.feature}</p>
+							<p class="price">${item.price}円</p>
+						</div>
+						<img src="/images/${item.imagePath}" alt="商品画像">
+					</div>
+				</div>
+			</div>
+		`;
+	}
+
+	function searchItems() {
+		const keyword = searchInput.value;
+		fetch('/api/items/search', {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({ keyword: keyword })
+		})
+			.then(res => res.json())
+			.then(items => {
+				itemList.innerHTML = '';
+				items.forEach(item => {
+					const itemCard = createItemCard(item);
+					itemList.insertAdjacentHTML('beforeend', itemCard);
+				});
+			})
+			.catch(error => {
+				console.error('検索失敗:', error);
+			});
+	}
+
+	searchButton.addEventListener('click', searchItems);
+	searchInput.addEventListener('keydown', e => {
+		if (e.key === 'Enter') searchItems();
+	});
+});
+
+
+
+
+
+
+
 function categorySearch() {
 	const buttons = document.querySelectorAll('button');
 	buttons.forEach(button => {
@@ -69,3 +125,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	categorySearch();
 });
+
+
+
