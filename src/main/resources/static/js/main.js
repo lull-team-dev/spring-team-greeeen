@@ -116,6 +116,8 @@ document.addEventListener('DOMContentLoaded', () => {
 								<img src="/images/${item.imagePath}" alt="商品画像">
 							</div>
 						</div>
+                                                        <button class="add-to-cart-button" data-id="${item.id}">カートに追加</button>
+
 					</div>
 				`;
 				list.insertAdjacentHTML('beforeend', itemCard);
@@ -128,5 +130,44 @@ document.addEventListener('DOMContentLoaded', () => {
 	categorySearch();
 });
 
+
+function setupAddToCartButton(){
+    document.querySelectorAll('.add-to-cart-button'.forEach(button => {
+        button.addEventListener('click', () => {
+const itemId = button.dataset.id;
+fetch('/api/cart/add',{
+    method:'POST',
+    headers:{
+        'Content-Type' : 'application/json'
+    },
+    body : JSON.stringify({itemId : itemId})
+})
+.then(response => response.json())
+.then(cartItems => {
+    renderCart(cartItems);
+} )
+.catch(error => {
+    console.error('カート追加失敗：',error);
+})
+        });
+    }));
+}
+
+
+function renderCart(cartItems){
+    const cart = document.getElementById('cart-item');
+    cart.innerHTML = '';
+    cartItems,array.forEach(item => {
+    const html =`
+    <div class="cart-row">
+        <img src="/images/${item.imagePath}" alt="${item.name}" class="cart-img">
+        <span>${item.name}</span>
+        <span>1 ×</span>
+        <span>${item.price}円</span>
+      </div>
+    `;
+    cart.insertAdjacentHTML('beforeend',html);
+    });
+}
 
 
