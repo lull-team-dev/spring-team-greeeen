@@ -3,13 +3,20 @@ package com.example.demo.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.example.demo.entity.Customer;
+import com.example.demo.repository.CustomerRepository;
+
 @Controller
 public class UserController {
 
+
 	// マイページの表示
 	@GetMapping("/mypage")
-	public String index() {
+	public String index(HttpSession session,Model model) {
 
+		// ログイン中のCustomerのアイコンを取得して表示
+		Customer customer = (Customer) session.getAttribute("loggedInCustomer");
+		model.addAttribute("customer", customer);
 		return "mypage";
 	}
 
