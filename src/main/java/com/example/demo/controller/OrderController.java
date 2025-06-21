@@ -14,7 +14,12 @@ public class OrderController {
 	HttpSession session;
 
 
-	// ログイン画面を表示
+	//顧客情報入力画面を表示
+	@GetMapping("/order")
+	public String index(){
+		return "customer_form";
+	}
+	// 注文履歴を表示
 		@GetMapping("/mypage/order_history")
 		public String showOrderHistory() {
 			

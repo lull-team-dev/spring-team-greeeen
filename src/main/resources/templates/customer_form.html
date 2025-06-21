@@ -1,9 +1,43 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8">
-</head>
-<body>
 
+<head>
+	<meta charset="UTF-8">
+	<title>顧客情報入力</title>
+</head>
+
+<body>
+	<header th:replace="header"></header>
+	<main>
+		<div class="order-container">
+			<p class="order-title">注文内容</p>
+			<img src="/images/${item.imagePath}" alt="商品画像">
+			<table border="1">
+<!--				<div class="item" th:each="item : ${order.items}">-->
+<!--					<tr th:each="item:${@cart.items}">-->
+<!--						<td th:text="${item.name}"></td>-->
+<!--						<td th:text="${item.quantity}"></td>-->
+<!--						<td th:text="${#numbers.formatInteger(item.price, 3, 'COMMA') + '円'}"></td>-->
+<!--					</tr>-->
+			</table>
+			<p>合計</p>
+			<!--合計数-->
+<!--			<td th:text="${#numbers.formatInteger(item.price * item.quantity, 3, 'COMMA') + '円'}"></td>-->
+		</div>
+
+		<form action="/order/confirm" method="post">
+			<div class="customer-form-container">
+				<p class="order-title">お届け先</p>
+				<p>お届け先住所</p>
+				<input type="text" name="delivery_address" />
+				<p>連絡先</p>
+				<input type="text" name="delivery_tel" />
+
+			</div>
+
+			<button class="btn-customer-form">確認画面へ</button>
+		</form>
+	</main>
 </body>
+
 </html>
