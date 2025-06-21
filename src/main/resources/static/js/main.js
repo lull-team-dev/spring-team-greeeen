@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 function setupAddToCartButton(){
-    document.querySelectorAll('.add-to-cart-button'.forEach(button => {
+    document.querySelectorAll('.add-to-cart-button').forEach(button => {
         button.addEventListener('click', () => {
 const itemId = button.dataset.id;
 fetch('/api/cart/add',{
@@ -150,7 +150,7 @@ fetch('/api/cart/add',{
     console.error('カート追加失敗：',error);
 })
         });
-    }));
+    });
 }
 
 
