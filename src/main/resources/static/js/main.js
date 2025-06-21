@@ -157,7 +157,7 @@ fetch('/api/cart/add',{
 function renderCart(cartItems){
     const cart = document.getElementById('cart-item');
     cart.innerHTML = '';
-    cartItems,array.forEach(item => {
+    cartItems.forEach(item => {
     const html =`
     <div class="cart-row">
         <img src="/images/${item.imagePath}" alt="${item.name}" class="cart-img">
