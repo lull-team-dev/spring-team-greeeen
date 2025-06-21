@@ -17,11 +17,11 @@
   <header th:replace="header"></header>
 
   <main class="container">
-    <!-- ユーザーのプロフィール画像 -->
-    <img class="profile-image" src="icon-sake.png" alt="プロフィール画像" />
+    <!-- ユーザーごとの推しおにぎりの表示 -->
+    <img th:src="@{${customer.iconPath}}" alt="プロフィール画像" width="100" height="100">
 
-    <!-- ユーザーへの挨拶文 -->
-    <h1 class="greeting">こんにちは</h1>
+    <!-- ログイン中のユーザーの名前の表示 -->
+    <h1 th:text="${@account.name}"></h1>
 
     <!-- 登録情報修正ページへGETリクエストで遷移するフォーム -->
     <form action="/mypage/update" method="get">
